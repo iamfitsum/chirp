@@ -10,7 +10,9 @@ import {
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  const { data } = api.posts.getAll.useQuery();
+
+  console.log(data);
 
   return (
     <>
@@ -26,6 +28,11 @@ const Home: NextPage = () => {
               <h1>My application</h1>
               <UserButton />
             </header>
+            <div>
+              {data?.map((post) => (
+                <div key={post.id}>{post.content}</div>
+              ))}
+            </div>
           </SignedIn>
           <SignedOut>
             {/* 
