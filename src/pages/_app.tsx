@@ -10,7 +10,7 @@ import Head from "next/head";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
-    <ClerkProvider
+    <ClerkProvider 
       appearance={{
         baseTheme: dark,
         variables: {

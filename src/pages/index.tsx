@@ -125,9 +125,7 @@ const Home: NextPage = () => {
         <SignedOut>
           {/* Non-authenticated visitors will be redirected to the sign in page.*/}
           {/* <RedirectToSignIn /> */}
-          <div className="flex justify-center">
-            <SignInButton />
-          </div>
+          <SignInButton />
         </SignedOut>
       </div>
       <Feed />
