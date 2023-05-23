@@ -1,13 +1,9 @@
 import { type NextPage } from "next";
-import Head from "next/head";
-import Link from "next/link";
 import {
   SignedIn,
   SignedOut,
-  RedirectToSignIn,
   SignInButton,
   UserButton,
-  useClerk,
   useUser,
 } from "@clerk/nextjs";
 import { api } from "~/utils/api";
@@ -18,8 +14,6 @@ import { PageLayout } from "~/components/layout";
 import { PostView } from "~/components/postview";
 
 const CreatePostWizard = () => {
-  // const {user} = useUser();
-  // if (!user) return null;
   const [input, setInput] = useState("");
 
   const ctx = api.useContext();
@@ -41,13 +35,6 @@ const CreatePostWizard = () => {
 
   return (
     <div className="flex w-full gap-3">
-      {/* <Image
-        src={user.profileImageUrl}
-        alt="Profile image"
-        className="h-14 w-14 rounded-full"
-        width={56}
-        height={56}
-      /> */}
       <UserButton
         appearance={{
           elements: {
@@ -109,22 +96,10 @@ const Home: NextPage = () => {
     <PageLayout>
       <div className="border-b border-slate-400 p-4">
         <SignedIn>
-          {/* <div>
-              <h1>My application</h1>
-              <UserButton />
-            </div> */}
           <CreatePostWizard />
-          {/* <button
-                  onClick={() => {
-                    void signOut();
-                  }}
-                >
-                  Sign out
-                </button> */}
         </SignedIn>
         <SignedOut>
           {/* Non-authenticated visitors will be redirected to the sign in page.*/}
-          {/* <RedirectToSignIn /> */}
           <SignInButton />
         </SignedOut>
       </div>
